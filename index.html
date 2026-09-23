@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HTL3R-Schularchiv – Diplomarbeit 2026/27</title>
+<meta name="description" content="Diplomarbeit an der HTL Wien 3 Rennweg: ein webbasiertes Archiv für Fotos, Videos und Dokumente der Schule.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #d7261e;
+    --ink: #1f2328;
+    --muted: #5b636d;
+    --line: #dde1e6;
+    --paper: #ffffff;
+    --tint: #f6f7f9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    font-size: 1.0625rem;
+  }
+  .wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
+  a { color: var(--red); }
+  a:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+
+  header { border-top: 6px solid var(--red); padding: 4rem 0 3rem; }
+  .school { color: var(--muted); margin: 0 0 1.5rem; }
+  h1 {
+    font-size: clamp(2.5rem, 7vw, 4.75rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.25rem;
+  }
+  .lead { font-size: 1.25rem; max-width: 38rem; margin: 0; }
+  .facts { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; margin: 2rem 0 0; padding: 0; list-style: none; color: var(--muted); }
+  .facts strong { color: var(--ink); font-weight: 500; }
+
+  section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 1.75rem; font-weight: 700; margin: 0 0 1.25rem; letter-spacing: -0.01em; }
+  h3 { font-size: 1.125rem; font-weight: 700; margin: 0 0 0.5rem; }
+  p { max-width: 42rem; }
+
+  .flow { background: var(--tint); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; overflow-x: auto; }
+  .flow svg { display: block; min-width: 640px; width: 100%; height: auto; }
+
+  .goals { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2rem; }
+  .goals ul { margin: 0; padding-left: 1.1rem; }
+  .goals li { margin-bottom: 0.35rem; }
+
+  .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.5rem; }
+  .person { border-left: 4px solid var(--red); padding: 0.25rem 0 0.25rem 1rem; }
+  .person p { margin: 0.25rem 0; }
+  .role { color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="school">Diplomarbeit an der HTL Wien 3 Rennweg, Abteilung für Informationstechnologie</p>
+    <h1>HTL3R-Schularchiv</h1>
+    <p class="lead">Ein gemeinsames Online-Archiv für alle Fotos, Videos und Dokumente, die im Schulalltag entstehen – geschützt durch Login, durchsuchbar und an einem Ort.</p>
+    <ul class="facts">
+      <li><strong>Projektnummer</strong> 3R IT 27 07</li>
+      <li><strong>Maturajahrgang</strong> 2027</li>
+      <li><strong>Betreuung</strong> Andreas Fink, Florian Weiss</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section id="idee">
+    <div class="wrap">
+      <h2>Die Idee</h2>
+      <p>Bei Projekten, Ausflügen und Schulveranstaltungen entstehen laufend Fotos, Videos und Dokumente. Heute liegen sie verstreut auf privaten Handys, USB-Sticks und in Chatgruppen und gehen mit der Zeit verloren.</p>
+      <p>Das Schularchiv sammelt diese Medien auf einer Webplattform. Angemeldete Personen können Medien hochladen, mit Tags versehen, durchsuchen und herunterladen. Admins prüfen neue Uploads, und wer auf einem Bild zu sehen ist, kann dessen Löschung beantragen. Dazu erarbeiten wir einen Styleguide für das Erscheinungsbild der Schule, zwei Tutorials zu Foto und Video sowie Material, um das Archiv an der Schule bekannt zu machen.</p>
+
+      <div class="flow" role="img" aria-label="Ablauf: Medien hochladen, von Admins prüfen und taggen, im Archiv suchen, ansehen oder herunterladen">
+        <svg viewBox="0 0 760 130" xmlns="http://www.w3.org/2000/svg" font-family="Archivo, Arial, sans-serif">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#5b636d"/>
+            </marker>
+          </defs>
+          <g>
+            <rect x="10" y="25" width="160" height="80" rx="10" fill="#fff" stroke="#d7261e" stroke-width="2"/>
+            <text x="90" y="60" text-anchor="middle" font-size="17" font-weight="700" fill="#1f2328">Hochladen</text>
+            <text x="90" y="82" text-anchor="middle" font-size="13" fill="#5b636d">Foto, Video, PDF</text>
+          </g>
+          <line x1="175" y1="65" x2="200" y2="65" stroke="#5b636d" stroke-width="2" marker-end="url(#arr)"/>
+          <g>
+            <rect x="205" y="25" width="160" height="80" rx="10" fill="#fff" stroke="#d7261e" stroke-width="2"/>
+            <text x="285" y="60" text-anchor="middle" font-size="17" font-weight="700" fill="#1f2328">Prüfen &amp; taggen</text>
+            <text x="285" y="82" text-anchor="middle" font-size="13" fill="#5b636d">Freigabe durch Admins</text>
+          </g>
+          <line x1="370" y1="65" x2="395" y2="65" stroke="#5b636d" stroke-width="2" marker-end="url(#arr)"/>
+          <g>
+            <rect x="400" y="25" width="160" height="80" rx="10" fill="#fff" stroke="#d7261e" stroke-width="2"/>
+            <text x="480" y="60" text-anchor="middle" font-size="17" font-weight="700" fill="#1f2328">Finden</text>
+            <text x="480" y="82" text-anchor="middle" font-size="13" fill="#5b636d">Suche und Filter</text>
+          </g>
+          <line x1="565" y1="65" x2="590" y2="65" stroke="#5b636d" stroke-width="2" marker-end="url(#arr)"/>
+          <g>
+            <rect x="595" y="25" width="160" height="80" rx="10" fill="#d7261e"/>
+            <text x="675" y="60" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">Nutzen</text>
+            <text x="675" y="82" text-anchor="middle" font-size="13" fill="#fff">Ansehen, herunterladen</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="ziele">
+    <div class="wrap">
+      <h2>Wesentliche Ziele</h2>
+      <div class="goals">
+        <div>
+          <h3>Plattform</h3>
+          <ul>
+            <li>Login, Accounts und Rollen (User und Admin)</li>
+            <li>Medien hochladen, taggen und verwalten</li>
+            <li>Suche und Filter nach Titel, Tags und Metadaten</li>
+            <li>Löschanträge und Datenschutz nach DSGVO</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Design</h3>
+          <ul>
+            <li>Visuelle Identität und Styleguide für die Schule</li>
+            <li>Mockups und einheitliches Designsystem</li>
+            <li>Deutschsprachige Oberfläche mit Dark Mode</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Medien und Kommunikation</h3>
+          <ul>
+            <li>Tutorials „Wie mache ich ein gutes Foto“ und „… ein gutes Video“</li>
+            <li>Plakate, Flyer und Social-Media-Beiträge</li>
+            <li>Kommunikations- und Marketingstrategie</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <h2>Team</h2>
+      <div class="team">
+        <div class="person">
+          <h3>Timon Pfeiffer</h3>
+          <p class="role">Projektleitung, 5BI</p>
+          <p>Backend, Datenbank, Sicherheit und Datenschutz</p>
+          <p><a href="mailto:2148@htl.rennweg.at">2148@htl.rennweg.at</a></p>
+        </div>
+        <div class="person">
+          <h3>Cemre Cengiz</h3>
+          <p class="role">Stellvertretende Projektleitung, 5AX</p>
+          <p>Frontend, Designsystem, Styleguide und Foto-Tutorial</p>
+          <p><a href="mailto:1179@htl.rennweg.at">1179@htl.rennweg.at</a></p>
+        </div>
+        <div class="person">
+          <h3>Kerem Canyurt</h3>
+          <p class="role">Projektmitarbeit, 5AX</p>
+          <p>Video-Tutorial, Marketing, Social Media und UX-Tests</p>
+          <p><a href="mailto:1178@htl.rennweg.at">1178@htl.rennweg.at</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    HTL Wien 3 Rennweg, Rennweg 89b, 1030 Wien. Diplomarbeit im Schuljahr 2026/27.
+  </div>
+</footer>
+
+</body>
+</html>
